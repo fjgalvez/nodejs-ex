@@ -169,8 +169,9 @@ app.get('/dameUsuarios', function(req, res) {
             res.json('{ nombre: ' + res.nombre + '}');
         });
     } else {
-        res.send('{ pageCount: -1 }');
+        res.send('{ Algo no ha funcionado }');
     }
+    console.log("esto es lo que hay: res.nombre");
 });
 
 app.get('/inicio', function(req, res) {
