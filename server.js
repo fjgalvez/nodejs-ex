@@ -109,9 +109,11 @@ app.get('/pagecount', function(req, res) {
     }
 });
 
+
+
 app.get('/inicio', function(req, res) {
     // Prueba para iniciar la  API
-    res.send('{Lllamada a la funcion Inicio}');
+    res.send('{Llamada a la funcion Inicio}');
 });
 // error handling
 app.use(function(err, req, res, next) {
