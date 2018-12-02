@@ -166,12 +166,12 @@ app.get('/dameUsuarios', function(req, res) {
     }
     if (db) {
         db.collection('usuarios').findOne({}, function(err, res) {
-            res.send('{ nombre: ' + res.nombre + '}');
+            res.json('{ nombre: ' + res.nombre + '}');
         });
     } else {
         res.send('{ Algo no ha funcionado }');
     }
-    console.log("esto es lo que hay: res.nombre");
+    console.log("esto es lo que hay: " + res.nombre);
 });
 
 app.get('/inicio', function(req, res) {
