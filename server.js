@@ -125,6 +125,24 @@ app.get('/crear', function(req, res) {
     }
 });
 
+app.get('/insertar', function(req, res) {
+    var registro = { nombre: "Francisco", apellido: "Galvez", edad: 49 };
+
+    if (!db) {
+        initDb(function(err) {});
+    }
+    if (db) {
+        db.collection("usuarios").insertOne(registro, function(err, result) {
+            if (err) throw err;
+            res.send("Se ha insertado un registro!");
+            // close the connection to db when you are done with it
+            db.close();
+        });
+    } else {
+        res.send('{No se ha podido conectar con la BBDD}');
+    }
+});
+
 app.get('/inicio', function(req, res) {
     // Prueba para iniciar la  API
     res.send('{Llamada a la funcion Inicio}');
