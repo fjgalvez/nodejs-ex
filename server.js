@@ -109,6 +109,22 @@ app.get('/pagecount', function(req, res) {
     }
 });
 
+app.get('/crear', function(req, res) {
+    if (!db) {
+        initDb(function(err) {});
+    }
+    if (db) {
+        db.createCollection("usuarios", function(err, result) {
+            if (err) throw err;
+            res.send("Se ha creado la colección usuarios!");
+            // close the connection to db when you are done with it
+            db.close();
+        });
+    } else {
+        res.send('{No se ha podido conectar con la BBDD}');
+    }
+});
+
 app.get('/inicio', function(req, res) {
     // Prueba para iniciar la  API
     res.send('{Llamada a la funcion Inicio}');
