@@ -114,7 +114,7 @@ app.get('/inicio', function(req, res) {
     res.send('{Llamada a la funcion Inicio}');
 });
 
-app.get('dimeAlgo', (req, res) => res.json({ respuesta: 'Estoy aqui escuchando' }));
+app.get('/dimeAlgo', (req, res) => res.json({ respuesta: 'Estoy aqui escuchando' }));
 
 // error handling
 app.use(function(err, req, res, next) {
