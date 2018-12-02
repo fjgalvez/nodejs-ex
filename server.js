@@ -143,6 +143,21 @@ app.get('/insertar', function(req, res) {
     }
 });
 
+app.get('/dameUsuarios', function(req, res) {
+    // try to initialize the db on every request if it's not already
+    // initialized.
+    if (!db) {
+        initDb(function(err) {});
+    }
+    if (db) {
+        db.collection('usuarios').findOne({}, function(err, res) {
+            res.json('{ nombre: ' + nombre + '}');
+        });
+    } else {
+        res.send('{ pageCount: -1 }');
+    }
+});
+
 app.get('/inicio', function(req, res) {
     // Prueba para iniciar la  API
     res.send('{Llamada a la funcion Inicio}');
