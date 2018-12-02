@@ -111,7 +111,7 @@ app.get('/pagecount', function(req, res) {
 
 app.get('/inicio', function(req, res) {
     // Prueba para iniciar la  API
-    app.listen(PORT, () => console.log(`Funciona !!!! - Puerto: ${PORT}`));
+    res.send('{Lllamada a la funcion Inicio}');
 });
 // error handling
 app.use(function(err, req, res, next) {
