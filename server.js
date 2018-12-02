@@ -109,12 +109,13 @@ app.get('/pagecount', function(req, res) {
     }
 });
 
-
-
 app.get('/inicio', function(req, res) {
     // Prueba para iniciar la  API
     res.send('{Llamada a la funcion Inicio}');
 });
+
+app.get('dimeAlgo', (req, res) => res.json({ respuesta: 'Estoy aqui escuchando' }));
+
 // error handling
 app.use(function(err, req, res, next) {
     console.error(err.stack);
