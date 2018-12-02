@@ -143,6 +143,21 @@ app.get('/insertar', function(req, res) {
     }
 });
 
+app.get('/userscount', function(req, res) {
+    // try to initialize the db on every request if it's not already
+    // initialized.
+    if (!db) {
+        initDb(function(err) {});
+    }
+    if (db) {
+        db.collection('usuarios').count(function(err, count) {
+            res.send('{ usersCount: ' + count + '}');
+        });
+    } else {
+        res.send('{ pageCount: -1 }');
+    }
+});
+
 app.get('/dameUsuarios', function(req, res) {
     // try to initialize the db on every request if it's not already
     // initialized.
@@ -151,7 +166,7 @@ app.get('/dameUsuarios', function(req, res) {
     }
     if (db) {
         db.collection('usuarios').findOne({}, function(err, res) {
-            res.json('{ nombre: ' + nombre + '}');
+            res.json('{ nombre: ' + res.nombre + '}');
         });
     } else {
         res.send('{ pageCount: -1 }');
