@@ -165,7 +165,7 @@ app.get('/dameUsuarios', function(req, res) {
         initDb(function(err) {});
     }
     if (db) {
-        db.collection('usuarios').findOne({ nombre: nombre }, function(err, res) {
+        db.collection('usuarios').findOne({}, function(err, res) {
             res.send('{ nombre: ' + res.nombre + '}');
         });
     } else {
